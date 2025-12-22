@@ -8,4 +8,4 @@
 ## 📝 Index
 | Date | Category | Title | Conference | Link |
 | :--- | :--- | :--- | :--- | :--- |
-| 23.12.22 | Guide | Example Review | - | [Link](./templates/review_template.md) |
+| 21.05.01 | Quantization | BRECQ | ICLR | [Link](./Quantization/PTQ/[2021_ICLR]%20BRECQ/README.md) |
