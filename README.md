@@ -6,6 +6,9 @@
 * `Quantization/`: 딥러닝 모델 양자화 관련 논문
 
 ## 📝 Index
-| Date | Category | Title | Conference | Link |
-| :--- | :--- | :--- | :--- | :--- |
-| 21.05.01 | Quantization | BRECQ | ICLR | [Link](./Quantization/PTQ/[2021_ICLR]%20BRECQ/README.md) |
+| Category | Title | Conference | Link |
+| :--- | :--- | :--- | :--- |
+| Quantization | BRECQ | ICLR | [Link](./Quantization/PTQ/[2021_ICLR]%20BRECQ/README.md) |
+| Quantization | AdaRound | ICML | [Link](./Quantization/PTQ/[2020_ICML]%20AdaRound//README.md) |
+| Quantization | SmoothQuant | ICML | [Link](./Quantization/PTQ/[2023_ICML]%20SmoothQuant//README.md) |
+| Quantization | AWQ | MLSys | [Link](./Quantization/PTQ/[2024_MLSys]%20AWQ%20-%20Activation-aware%20Weight%20Quantization//README.md) |
