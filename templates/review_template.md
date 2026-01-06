@@ -5,13 +5,13 @@
 > **Author**: 저자명 (소속)
 > **Date**: 202X-XX-XX
 
-## 1. 기존 연구 (Related Work)
+## 1. 기존 연구 (Related Work & Limitations)
 * **기존의 접근 방식**:
     * 내용 작성
 * **기존 방식의 한계점**:
     * 내용 작성
 
-## 2. 기존 연구와의 차이점 (Key Contribution)
+## 2. 기존 연구와의 차이점 (Key Contribution & Methodology)
 ### 핵심 아이디어 (Core Idea)
 * (이 논문이 제안하는 해결책의 핵심 한 문장)
 
