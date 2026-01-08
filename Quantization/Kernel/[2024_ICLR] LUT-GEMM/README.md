@@ -68,7 +68,27 @@
     - **그룹 크기($g$)의 영향**: 그룹 크기를 줄이면 정확도(PPL)는 올라가지만, 스케일링 팩터 저장 공간이 늘어나 메모리 효율이 약간 떨어짐. $g=128$ 정도가 속도와 정확도의 균형점임을 확인.
         
     - **커널 비교**: 다른 커널과 비교했을 때, LUT-GEMM이 가장 낮은 레이턴시를 기록함 (Table 1).
+
+## 4. Critical Analysis
+
+논문이 제안한 방식은 Single Batch와 저정밀도에서 최고의 효율을 나타내고, 다른 양자화 모델을 커널 위에 돌릴 수 있는 범용성이 뛰어납니다. 하지만, 실제 서버 환경에서 고성능 서빙 시스템에 적용하기에는 한계점이 있다고 생각합니다.
+
+- **배치 크기 확장에 따른 성능 저하**
+    
+    - **"This limitation is primarily attributed to the constrained memory bandwidth between core and LUTs in the shared memory.""** 
+
+	    - 논문에서도 배치 크기 증가에 따라 성능이 저하 된다고 언급이 되었습니다.  LLM의 **생성 단계**에서는 확실히 메모리 대역폭 영역이 강한 것은 맞지만, 배치가 커지면 **Compute bound 영역**으로 변한다고 생각합니다. 이 때, 기존 Tensor Core 기반의 GEMM이 더 효율이 높을 가능성이 있다고 생각합니다.
         
+- **Shared Memory 의존성 및 Bank Conflict 위험**
+    
+    - 논문에서 Shared Memory에 의존합니다. 이는 여러 스레드에서 동시에 LUT를 조회할 때, Bank Conflict 문제가 발생할 수 있습니다. 
+
+	- 하지만 후속 연구인 **"FIGLUT An Energy-Efficient Accelerator Design for FP-INT GEMM Using Look-Up Tables"** 에서 문제를 해결했습니다.
+		- Flip Flop과 MUX를 사용하여 해결한 것으로 보입니다.
+        
+- **LUT 사전 생성 오버헤드**
+
+	- 커널 실행 시마다 LUT를 생성하는 과정에서 오버헤드가 발생할 수 있습니다. (이 부분도 후속 연구에서 해결한 것으로 보입니다.)
 
 ---
 
