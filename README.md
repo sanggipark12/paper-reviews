@@ -12,3 +12,4 @@
 | Quantization | AdaRound | ICML | [Link](./Quantization/PTQ/[2020_ICML]%20AdaRound/) |
 | Quantization | SmoothQuant | ICML | [Link](./Quantization/PTQ/[2023_ICML]%20SmoothQuant/) |
 | Quantization | AWQ | MLSys | [Link](./Quantization/PTQ/[2024_MLSys]%20AWQ%20-%20Activation-aware%20Weight%20Quantization/) |
+| System & Memory Optimization | LUT_GEMM | ICLR | [Link](./System%20&%20Memory%20Optimization/Kernel/[2024_ICLR]%20LUT-GEMM/) |
