@@ -12,8 +12,8 @@
 
 __global__ void sgemm(
     half* input, int* weight, half* output,
-    int N, int K, int M,
-    float scale, float zero_point
+    float* scale, float* zero_point,        // per-channel scale 
+    int N, int K, int M
 )
 {
     __shared__ int s_w[16][2];
@@ -26,6 +26,14 @@ __global__ void sgemm(
     int ty = threadIdx.y;
 
     float acc = 0.0f;
+
+    float _scale = 1.0f;
+    float _zp = 0.0f;
+
+    if (col < M) {
+        _scale = scale[col];
+        _zp = zero_point[col];
+    }
 
     for (int k = 0; k<K; k+=16) {
 
@@ -49,7 +57,7 @@ __global__ void sgemm(
             int packed_val = s_w[tx][i/8];
             int w_int4 = (packed_val >> ((i % 8) * 4)) & 0xF;
 
-            float w_fp = ((float)w_int4 - zero_point) * scale;
+            float w_fp = ((float)w_int4 - _zp) * _scale;
             float in_fp = __half2float(s_in[ty][i]);
 
             acc += w_fp * in_fp;
